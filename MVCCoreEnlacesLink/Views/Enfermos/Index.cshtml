@@ -1,0 +1,42 @@
+﻿@model List<Enfermo>
+
+<h1>Enfermos LINQ To SQL</h1>
+
+<button class="btn btn-secondary">
+    <a asp-controller="Enfermos"
+       asp-action="BuscadorEnfermos">
+        Buscar enfermos
+    </a>
+</button>
+
+<table class="table table-info table-bordered table-active table-hover">
+    <thead>
+        <tr>
+            <th>INSCRIPCIÓN</th>
+            <th>APELLIDO</th>
+            <th>DIRECCIÓN</th>
+            <th>FECHA NACIMIENTO</th>
+            <th>TURNO</th>
+            <th>SEGURIDAD SOCIAL</th>
+            <th>DELETE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Enfermo enfermo in Model)
+        {
+            <tr>
+                <td>@enfermo.Inscripcion</td>
+                <td>@enfermo.Apellido</td>
+                <td>@enfermo.Direccion</td>
+                <td>@enfermo.Fecha_Nac</td>
+                <td>@enfermo.S</td>
+                <td>@enfermo.NSS</td>
+                <td>
+                    <button class="btn btn-danger mx-auto">
+                        @Html.ActionLink("Delete", "Delete", "Enfermos", new { id = enfermo.Inscripcion})
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

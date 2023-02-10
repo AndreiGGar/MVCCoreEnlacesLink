@@ -1,0 +1,46 @@
+﻿@model List<Enfermo>
+
+<h1 style="color:red">
+    Buscador empleados
+</h1>
+
+<form method="post" class="form">
+    <label>Buscar por fecha de nacimiento:: </label>
+    <input type="date" name="fecha" class="form-control" required />
+    <button class="btn btn-info">
+        Buscar
+    </button>
+</form>
+<h2 style="color:red">
+    @ViewData["MENSAJE"]
+</h2>
+
+@if (Model != null)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>INSCRIPCIÓN</th>
+                <th>APELLIDO</th>
+                <th>DIRECCIÓN</th>
+                <th>FECHA NACIMIENTO</th>
+                <th>TURNO</th>
+                <th>SEGURIDAD SOCIAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Enfermo enfermo in Model)
+            {
+                <tr>
+                    <td>@enfermo.Inscripcion</td>
+                    <td>@enfermo.Apellido</td>
+                    <td>@enfermo.Direccion</td>
+                    <td>@enfermo.Fecha_Nac</td>
+                    <td>@enfermo.S</td>
+                    <td>@enfermo.NSS</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
